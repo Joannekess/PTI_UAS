@@ -3,7 +3,7 @@ module.exports = {
   sourcesURL: 'https://newsapi.org/v2/sources?',
   everythingURL: 'https://newsapi.org/v2/everything?',
   countryID: 'country=us&',
-  apiKey: 'apiKey=4769cf115bda46b99418f4e913adb92f',
+  apiKey: 'apiKey=555f588a95a246eb8ec62788d8266892',
   sources: '&sources=',
   search: '&q='
 }

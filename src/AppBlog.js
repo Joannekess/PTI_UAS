@@ -44,25 +44,31 @@ class AppBlog extends Component {
 
     
   render() {
+    const token = localStorage.getItem('token')
+    // console.log(token)
+    
     const AppBlog = () => {
-    const checkLogin = async () => {
+      const checkLogin = async () => {
         let response;
         try {
-            response = await  axios.post('http://api-login-pti.herokuapp.com/api/check_login', {
-                token: localStorage.getItem('token')
-            }, {
-                headers: {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"}
-            })
+          response = await  axios.post('http://api-login-pti.herokuapp.com/api/check_login', {
+            token : localStorage.getItem('token'),
+          }, {
+            headers: {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"}
+          })
+          console.log(token)
         } catch (error) {
-            console.log(error);
+          console.log(error);
         }
-        return response.data;
-    }
-
-    if(checkLogin().message === "User is logged In"){
+        return response.message;
+        
+      }
+      
+      
+      if(checkLogin().message === "User is logged In"){
         return <AppBlog />
-    } 
-    else {
+      } 
+      else {
         return <Navigate to='/Login' />
       }
     }
