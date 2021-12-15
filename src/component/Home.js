@@ -50,7 +50,6 @@ class Home extends React.Component{
                 <Route path="/Blog" element={<AppBlog />} />
                 <Route path="/About" element={<About />} />
                 <Route path="/Login" element={<Login />} />
-                /* Logout */
                 <Route path ="/Logout"
                 render={() => {
                     localStorage.clear();

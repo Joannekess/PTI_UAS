@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { Navigate } from "react-router";
 
 const Login = () => {
 
@@ -25,7 +26,6 @@ const Login = () => {
         password: pass,
       }, { headers : { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"}})
       .then((res) => localStorage.setItem('token', res.data.data.token || null));
-  
     // if (response.code === "SUCCESS") {
     //   localStorage.setItem("token", response.data.token);
     //  }
@@ -48,38 +48,43 @@ const Login = () => {
     // }
   //   console.log("SUCCESS")
   // };
+    const token = localStorage.getItem('token')
   
-    return (
-    <div style={{ marginTop: "130px" }}>
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-6">
-            <div className="card p-4">
-              <div className="card-body">
+    if("token" in localStorage){
+      return <Navigate to='/Blog' />
+    } else {
+      return (
+      <div style={{ marginTop: "130px" }}>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-md-6">
+              <div className="card p-4">
+                <div className="card-body">
 
-                <form onSubmit={(event) => handleOnSubmit(event)}>   
-                  <div className="form-group"> 
-                    <h2>Login</h2>
-                      <label>Email</label>
-                      <input type="text" placeholder="Email" className="form-control" value={email} onChange={onChangeEmail}></input>
-                    <div/>
+                  <form onSubmit={(event) => handleOnSubmit(event)}>   
+                    <div className="form-group"> 
+                      <h2>Login</h2>
+                        <label>Email</label>
+                        <input type="text" placeholder="Email" className="form-control" value={email} onChange={onChangeEmail}></input>
+                      <div/>
 
-                    <div className="form-group">
-                      <label>Password</label>
-                      <input type="password" placeholder="Password" className="form-control" value={password} onChange={onChangePassword}></input>
+                      <div className="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Password" className="form-control" value={password} onChange={onChangePassword}></input>
+                      </div>
+
+                      <button className="btn btn-primary">Login</button>
                     </div>
+                  </form>
 
-                    <button className="btn btn-primary">Login</button>
-                  </div>
-                </form>
-
-              </div>
-            </div>  
+                </div>
+              </div>  
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 // import React, { Component } from 'react';

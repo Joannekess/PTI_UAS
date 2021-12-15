@@ -45,39 +45,15 @@ class AppBlog extends Component {
     
   render() {
     const token = localStorage.getItem('token')
-    // console.log(token)
     
-    const AppBlog = () => {
-      const checkLogin = async () => {
-        let response;
-        try {
-          response = await  axios.post('http://api-login-pti.herokuapp.com/api/check_login', {
-            token : localStorage.getItem('token'),
-          }, {
-            headers: {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"}
-          })
-          console.log(token)
-        } catch (error) {
-          console.log(error);
-        }
-        return response.message;
-        
-      }
+    if("token" in localStorage){
       
-      
-      if(checkLogin().message === "User is logged In"){
-        return <AppBlog />
-      } 
-      else {
-        return <Navigate to='/Login' />
-      }
-    }
-
     let { sources, sourceValue, searchValue } = this.state
     const { classes } = this.props;
     return (
 
       <div className="root">
+        
         <div className='header'>
           <div className='row'>
             <div className='col-9 text-start p-3 ps-4'>
@@ -102,7 +78,7 @@ class AppBlog extends Component {
         </div>
 
         <div className='pt-5' >
-          <h1>Local News</h1>
+          <h1>International News</h1>
           Sumber Berita
         </div>
         <select value={this.state.sourceValue} onChange={this.handleChangeSource} className='boxinput'>
@@ -125,7 +101,13 @@ class AppBlog extends Component {
       </div>
 
     );
+  }else{
+    return <Navigate to='/Login' />
   }
+}
+
+  
+
 
   handleChangeSource(event) {
     this.setState({ sourceValue: event.target.value });
