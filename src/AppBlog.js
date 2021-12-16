@@ -46,7 +46,7 @@ class AppBlog extends Component {
   render() {
     const token = localStorage.getItem('token')
     
-    if("token" in localStorage){
+  if("token" in localStorage){
       
     let { sources, sourceValue, searchValue } = this.state
     const { classes } = this.props;
@@ -105,9 +105,6 @@ class AppBlog extends Component {
     return <Navigate to='/Login' />
   }
 }
-
-  
-
 
   handleChangeSource(event) {
     this.setState({ sourceValue: event.target.value });
