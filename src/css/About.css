@@ -63,6 +63,7 @@ h2{
 #bulbasaur {
   background-image: url('../image/joen.jpg');
   color: rgba(71, 121, 94, .9);
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -74,6 +75,7 @@ h2{
 #charmander {
   background-image: url('../image/pael.jpg');
   color: rgba(221, 86, 63, .9);
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -85,6 +87,7 @@ h2{
 #squirtle {
   background-image: url('../image/nehe.jpg');
   color: rgba(65, 102, 114, .9);
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
