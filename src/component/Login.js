@@ -21,11 +21,16 @@ const Login = () => {
     const email = event.target[0].value;
     const pass = event.target[1].value;
   
-    const response = axios.post("http://api-login-pti.herokuapp.com/api/login_user", {
+    axios.post("http://api-login-pti.herokuapp.com/api/login_user", {
         email: email,
         password: pass,
       }, { headers : { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"}})
-      .then((res) => localStorage.setItem('token', res.data.data.token || null));
+      .then((res) => {
+        if (res.data.data.token) {
+          localStorage.setItem('token', res.data.data.token)
+          window.location.href = "/Blog" // untuk meng refresh halaman dan juga menuju ke halaman yang di inginkan
+        }
+      });
     // if (response.code === "SUCCESS") {
     //   localStorage.setItem("token", response.data.token);
     //  }
@@ -65,12 +70,12 @@ const Login = () => {
                     <div className="form-group"> 
                       <h2>Login</h2>
                         <label>Email</label>
-                        <input type="text" placeholder="Email" className="form-control" value={email} onChange={onChangeEmail}></input>
+                        <input type="text" placeholder="Email" className="form-control" value={email} onChange={onChangeEmail} required></input>
                       <div/>
 
                       <div className="form-group">
                         <label>Password</label>
-                        <input type="password" placeholder="Password" className="form-control" value={password} onChange={onChangePassword}></input>
+                        <input type="password" placeholder="Password" className="form-control" value={password} onChange={onChangePassword} required></input>
                       </div>
 
                       <button className="btn btn-primary">Login</button>

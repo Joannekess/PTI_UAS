@@ -78,7 +78,7 @@ class AppBlog extends Component {
         </div>
 
         <div className='pt-5' >
-          <h1>International News</h1>
+          <h1>National News</h1>
           Sumber Berita
         </div>
         <select value={this.state.sourceValue} onChange={this.handleChangeSource} className='boxinput'>

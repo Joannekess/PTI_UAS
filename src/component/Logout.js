@@ -5,7 +5,8 @@ const Logout = () => {
 
     window.localStorage.removeItem('token');
     console.log("Halo ini adalah logout system");
-    return <Navigate to="/Login"/>
+    window.location.href = "/Login" // untuk meng refresh halaman dan juga menuju ke halaman yang di inginkan
+    // return <Navigate to="/Login"/> // ini hanya menuju ke halaman yang di inginkan
 
 }
 
