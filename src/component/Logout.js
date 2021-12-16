@@ -1,12 +1,16 @@
 import React from "react";
 import { Navigate } from "react-router";
+import Swal from 'sweetalert2';
 
 const Logout = () => {
 
     window.localStorage.removeItem('token');
-    console.log("Halo ini adalah logout system");
-    window.location.href = "/Login" // untuk meng refresh halaman dan juga menuju ke halaman yang di inginkan
-    // return <Navigate to="/Login"/> // ini hanya menuju ke halaman yang di inginkan
+    Swal.fire({
+        icon: 'success',
+        title: 'Logout Sukses',
+        timer: 1500
+      })
+     return <Navigate to="/Login"/> // ini hanya menuju ke halaman yang di inginkan
 
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { Navigate } from "react-router";
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
@@ -27,8 +28,14 @@ const Login = () => {
       }, { headers : { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"}})
       .then((res) => {
         if (res.data.data.token) {
-          localStorage.setItem('token', res.data.data.token)
-          window.location.href = "/Blog" // untuk meng refresh halaman dan juga menuju ke halaman yang di inginkan
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Sukses',
+          }).then(function() {
+            window.location.href = "/Blog";
+        });
+          localStorage.setItem('token', res.data.data.token);
+          // window.location.href = "/Blog"; // untuk meng refresh halaman dan juga menuju ke halaman yang di inginkan
         }
       });
     // if (response.code === "SUCCESS") {
